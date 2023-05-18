@@ -20,6 +20,9 @@ model User {
 
   firstName    String?
   lastName    String?
+
+  @@map("user")
+  bookmarks Bookmark[]
   
 }
 
@@ -31,5 +34,10 @@ model Bookmark {
   title String
   description String?
   link String
+
+  user_id Int
+  user User @relation(fields:[user_id], references:[id])
+
+  @@map("bookmark")
 
 }
